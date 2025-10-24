@@ -20,6 +20,9 @@ box-sizing: border-box;
         min-height: 100vh; /* Garante que o fundo preencha toda a tela */
         display: flex; /* Adicionado para centralizar e forçar o preenchimento */
         flex-direction: column;
+        
+        /* CORREÇÃO CHAVE: Remove a barra de rolagem horizontal */
+        overflow-x: hidden; 
     }
 
     /* A PAGE agora ocupa 100% da largura e altura mínimas para o conteúdo */
@@ -2252,4 +2255,3 @@ box-sizing: border-box;
 </script>
 </body>
 </html>
-	
