@@ -1,0 +1,2255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Tráfego Pago para Negócios Locais</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+    /* O BODY agora define o layout em tela cheia do celular */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        /* Padding é removido do body para maximizar a área de visualização */
+        padding: 0;
+        line-height: 1.6;
+        min-height: 100vh; /* Garante que o fundo preencha toda a tela */
+        display: flex; /* Adicionado para centralizar e forçar o preenchimento */
+        flex-direction: column;
+    }
+
+    /* A PAGE agora ocupa 100% da largura e altura mínimas para o conteúdo */
+    .page {
+        /* Largura total: a página branca agora preenche a largura do body (mobile-first) */
+        width: 100%;
+        min-height: 100vh;
+        padding: 40px 20px; /* Padding ajustado para um bom respiro em telas pequenas */
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        /* Ajustes para o mobile-first */
+        box-shadow: none; /* Remove a sombra do ebook-container */
+        border-radius: 0; /* Remove o border-radius do ebook-container */
+    }
+
+    /* Ajuste do fundo branco (bg-white) para mobile-first.
+       Como as páginas brancas são renderizadas DENTRO do body, elas precisam
+       preencher a largura. */
+    .bg-white {
+        background: #ffffff;
+        box-shadow: none;
+    }
+    .bg-light {
+        background: #f8fafc;
+        box-shadow: none;
+    }
+
+    /* Cores do tema (mantidas) */
+    .bg-royal { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); }
+    .bg-purple { background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); }
+    .bg-orange { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+    .bg-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+
+    /* Capa */
+    .cover {
+        text-align: center;
+        justify-content: center;
+        color: white;
+        /* Garante que a capa ocupe toda a tela no carregamento */
+        height: 100vh;
+    }
+
+    .cover h1 {
+        font-size: 2.5rem;
+        font-weight: 900;
+        margin-bottom: 20px;
+        line-height: 1.2;
+        text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .cover .subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+        opacity: 0.95;
+    }
+
+    .author {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 60px;
+        font-size: 1.1rem;
+    }
+
+    .rocket {
+        font-size: 3rem;
+        margin: 30px 0;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+
+    /* Índice */
+    .toc-item {
+        background: white;
+        padding: 15px 20px;
+        margin: 10px 0;
+        border-radius: 12px;
+        border-left: 4px solid #2563eb;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+    }
+
+    .toc-item:hover {
+        transform: translateX(5px);
+    }
+
+    .toc-item .number {
+        color: #2563eb;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    /* Títulos */
+    h2 {
+        color: #1e293b;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        font-weight: 800;
+    }
+
+    h3 {
+        color: #334155;
+        font-size: 1.4rem;
+        margin: 25px 0 15px;
+        font-weight: 700;
+    }
+
+    /* Boxes informativos */
+    .info-box {
+        background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%);
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px 0;
+        border-left: 5px solid #8b5cf6;
+    }
+
+    .tip-box {
+        background: linear-gradient(135deg, #fed7aa 0%, #fde68a 100%);
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px 0;
+        border-left: 5px solid #f97316;
+    }
+
+    .warning-box {
+        background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px 0;
+        border-left: 5px solid #dc2626;
+    }
+
+    .success-box {
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px 0;
+        border-left: 5px solid #10b981;
+    }
+
+    /* Ícones */
+    .icon {
+        font-size: 1.5rem;
+        margin-right: 10px;
+    }
+
+    /* Estatísticas */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin: 25px 0;
+    }
+
+    .stat-card {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .stat-number {
+        font-size: 2rem;
+        font-weight: 900;
+        color: #2563eb;
+    }
+
+    .stat-label {
+        color: #64748b;
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+
+    /* Checklist */
+    .checklist-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    /* NOVO CSS para estilizar o input checkbox nativo */
+    .checklist-item input[type="checkbox"] {
+        /* Reset básico do navegador */
+        appearance: none;
+        -webkit-appearance: none;
+
+        /* Dimensões do checkbox customizado */
+        width: 24px;
+        height: 24px;
+        border: 2px solid #2563eb;
+        border-radius: 6px;
+        flex-shrink: 0;
+        margin-top: 2px;
+        cursor: pointer;
+        position: relative;
+        background-color: white;
+        transition: all 0.2s ease;
+    }
+
+    /* Estilo quando o checkbox está marcado */
+    .checklist-item input[type="checkbox"]:checked {
+        background-color: #2563eb;
+        border-color: #2563eb;
+    }
+
+    /* Adicionar o ícone de 'check' (✓) quando marcado */
+    .checklist-item input[type="checkbox"]:checked::after {
+        content: '✓';
+        color: white;
+        font-size: 18px; /* Tamanho do check */
+        font-weight: bold;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    /* Tabelas */
+    .comparison-table {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        margin: 20px 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .table-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 15px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .table-header {
+        background: #2563eb;
+        color: white;
+        font-weight: bold;
+    }
+
+    /* Botão CTA */
+    .cta-button {
+        background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        color: white;
+        padding: 18px 30px;
+        border-radius: 30px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin: 30px 0;
+        box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
+        text-decoration: none;
+        display: block;
+    }
+
+    /* Quote */
+    .quote {
+        border-left: 4px solid #8b5cf6;
+        padding-left: 20px;
+        margin: 25px 0;
+        font-style: italic;
+        color: #475569;
+        font-size: 1.1rem;
+    }
+
+    /* Navegação */
+    .nav-buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: auto;
+        padding: 20px; /* Mantido para boa aparência */
+
+        /* Fixo na parte inferior em telas móveis */
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente para destaque */
+        box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+    }
+
+    .nav-btn {
+        flex: 1;
+        padding: 15px;
+        background: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .nav-btn:hover {
+        background: #1e40af;
+        transform: translateY(-2px);
+    }
+
+    .nav-btn:disabled {
+        background: #cbd5e1;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .menu-btn {
+        padding: 15px 20px;
+        background: #8b5cf6;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 60px;
+    }
+
+    .menu-btn:hover {
+        background: #7c3aed;
+        transform: translateY(-2px);
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .hamburger span {
+        display: block;
+        width: 24px;
+        height: 3px;
+        background: white;
+        border-radius: 2px;
+    }
+
+    /* Responsivo - Assegura a experiência móvel em telas pequenas */
+    @media (max-width: 480px) {
+
+        .page {
+            padding: 30px 20px;
+        }
+
+        .cover h1 {
+            font-size: 2rem;
+        }
+
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Utilitários (mantidos) */
+    .text-center { text-align: center; }
+    .mt-20 { margin-top: 20px; }
+    .mb-20 { margin-bottom: 20px; }
+    .bold { font-weight: bold; }
+    .color-royal { color: #2563eb; }
+    .color-purple { color: #8b5cf6; }
+    .color-orange { color: #f97316; }
+</style>
+</head>
+<body>
+<div id="pageContainer"></div>
+<div class="nav-buttons">
+    <button class="nav-btn" id="prevBtn" onclick="prevPage()">← Anterior</button>
+    <button class="menu-btn" id="menuBtn" onclick="goToIndex()" title="Voltar ao Índice">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+    <button class="nav-btn" id="nextBtn" onclick="nextPage()">Próxima →</button>
+</div>
+
+<script>
+    let currentPage = 0;
+
+    // Função utilitária para criar um input checkbox interativo
+    function checkbox(id) {
+        return `<input type="checkbox" id="${id}" onclick="saveCheckboxState('${id}')">`;
+    }
+
+    // Função para salvar o estado do checkbox (usando localStorage)
+    function saveCheckboxState(id) {
+        const checkboxElement = document.getElementById(id);
+        if (checkboxElement) {
+            localStorage.setItem(id, checkboxElement.checked ? 'checked' : 'unchecked');
+        }
+    }
+
+    // Função para carregar o estado do checkbox
+    function loadCheckboxState() {
+        // Itera sobre todos os inputs checkbox na página atual e aplica o estado salvo
+        const checkboxes = document.querySelectorAll('#pageContainer input[type="checkbox"]');
+        checkboxes.forEach(cb => {
+            const state = localStorage.getItem(cb.id);
+            if (state === 'checked') {
+                cb.checked = true;
+            } else if (state === 'unchecked') {
+                cb.checked = false;
+            }
+        });
+    }
+
+    const pages = [
+        // CAPA (P0)
+        `<div class="page bg-gradient cover">
+            <h1>📘 Guia de Tráfego Pago para Negócios Locais</h1>
+            <p class="subtitle">Do Zero ao Primeiro Anúncio</p>
+            <div class="rocket">🚀</div>
+            <p style="font-size: 1.1rem; opacity: 0.9;">Transforme visibilidade em resultados reais</p>
+            <div class="author">
+                <span>✍️</span>
+                <span>Por Raimundo Silva</span>
+            </div>
+        </div>`,
+
+        // ÍNDICE (P1)
+        `<div class="page bg-light">
+            <h2 class="color-royal">📑 Índice</h2>
+            <div class="toc-item" onclick="goToPage(3)" style="cursor: pointer;">
+                <div class="number">01</div>
+                <div>O que é tráfego pago e por que funciona</div>
+            </div>
+            <div class="toc-item" onclick="goToPage(5)" style="cursor: pointer;">
+                <div class="number">02</div>
+                <div>"Turbinar" vs Gerenciador de Anúncios</div>
+            </div>
+            <div class="toc-item" onclick="goToPage(7)" style="cursor: pointer;">
+                <div class="number">03</div>
+                <div>Benefícios do tráfego pago local</div>
+            </div>
+            <div class="toc-item" onclick="goToPage(9)" style="cursor: pointer;">
+                <div class="number">04</div>
+                <div>Quando investir (pré-requisitos)</div>
+            </div>
+            <div class="toc-item" onclick="goToPage(11)" style="cursor: pointer;">
+                <div class="number">05</div>
+                <div>Planejamento estratégico</div>
+            </div>
+            <div class="toc-item" onclick="goToPage(15)" style="cursor: pointer;">
+                <div class="number">06</div>
+                <div>Ferramentas essenciais</div>
+            </div>
+            <div class="toc-item" onclick="goToPage(17)" style="cursor: pointer;">
+                <div class="number">07</div>
+                <div>Criativos e copy que convertem</div>
+            </div>
+            <div class="toc-item" onclick="goToPage(19)" style="cursor: pointer;">
+                <div class="number">08</div>
+                <div>Orçamento e lances</div>
+            </div>
+            <div class="toc-item" onclick="goToPage(21)" style="cursor: pointer;">
+                <div class="number">09</div>
+                <div>Segmentação local</div>
+            </div>
+            <div class="toc-item" onclick="goToPage(23)" style="cursor: pointer;">
+                <div class="number">10</div>
+                <div>Métricas e otimização</div>
+            </div>
+            <div class="toc-item" onclick="goToPage(25)" style="cursor: pointer;">
+                <div class="number">11</div>
+                <div>Roteiro de 30 dias</div>
+            </div>
+            <div class="toc-item" onclick="goToPage(26)" style="cursor: pointer;">
+                <div class="number">12</div>
+                <div>Erros comuns e como evitá-los</div>
+            </div>
+        </div>`,
+
+        // PREFÁCIO (P2)
+        `<div class="page bg-white">
+            <h2 class="color-purple">💭 Prefácio</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                Talvez você já tenha tentado divulgar no Instagram, impulsionar uma publicação ou até contar com o famoso "boca a boca", mas no fim das contas, <strong>as vendas continuaram imprevisíveis</strong>.
+            </p>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">❓ A pergunta que não quer calar:</p>
+                <p>Quantas vezes você já sentiu que seu negócio tem potencial para crescer, mas simplesmente não sabia como atrair mais clientes?</p>
+            </div>
+
+            <p style="margin: 20px 0;">
+                A verdade é que <strong class="color-orange">não falta esforço, falta direção</strong>.
+            </p>
+
+            <div class="success-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">🎯 Este guia foi criado para:</p>
+                <p>✅ Ajudar empreendedores a sair da incerteza<br>
+                ✅ Construir um caminho claro e estratégico<br>
+                ✅ Crescer de forma previsível e lucrativa</p>
+            </div>
+
+            <div class="quote">
+                "O sucesso do seu negócio não será mais questão de acaso — e sim de escolha."
+            </div>
+        </div>`,
+
+        // O QUE É TRÁFEGO PAGO (P3)
+        `<div class="page bg-white">
+            <h2 class="color-royal">🎯 O Que é Tráfego Pago?</h2>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">📘 Definição</p>
+                <p>Tráfego pago é quando você <strong>investe dinheiro para atrair pessoas certas</strong> até o seu negócio, seja para visitar seu perfil, site, WhatsApp ou loja física.</p>
+            </div>
+
+            <p style="margin: 20px 0;">
+                Em vez de depender de sorte, indicações ou posts que "podem ou não viralizar", você <strong class="color-orange">paga para que suas mensagens sejam mostradas exatamente para quem tem mais chance de comprar</strong> de você.
+            </p>
+
+            <h3 class="color-purple">🎪 O Que é "Tráfego" Afinal?</h3>
+            <p style="margin: 15px 0;">
+                <strong>No mundo físico:</strong> é o fluxo de pessoas que passam na frente da sua loja.<br>
+                <strong>No digital:</strong> é o fluxo de pessoas que visualizam seus anúncios, posts ou páginas.
+            </p>
+
+            <div class="warning-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">⚠️ Atenção!</p>
+                <p>Sem tráfego, ninguém vê sua oferta.<br>
+                Sem visibilidade, não há vendas.</p>
+            </div>
+
+            <div class="tip-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">💡 Lembre-se:</p>
+                <p>Tráfego pago é <strong>comprar visibilidade de forma estratégica</strong>. Você paga para aparecer onde seu cliente ideal está — e isso muda o jogo.</p>
+            </div>
+        </div>`,
+
+        // POR QUE FUNCIONA PARA NEGÓCIOS LOCAIS (P4)
+        `<div class="page bg-white">
+            <h2 class="color-royal">📍 Por Que Funciona para Negócios Locais?</h2>
+
+            <p style="margin-bottom: 25px;">
+                A grande vantagem é que você pode <strong>segmentar exatamente quem verá seus anúncios</strong>, filtrando por:
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">📍</div>
+                    <div class="stat-label">Localização</div>
+                    <p style="font-size: 0.85rem; margin-top: 8px; color: #64748b;">Cidade, bairro ou raio de distância</p>
+                </div>
+                <div class="stat-card">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">❤️</div>
+                    <div class="stat-label">Interesses</div>
+                    <p style="font-size: 0.85rem; margin-top: 8px; color: #64748b;">Estética, delivery, academia, moda</p>
+                </div>
+                <div class="stat-card">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">👥</div>
+                    <div class="stat-label">Demografia</div>
+                    <p style="font-size: 0.85rem; margin-top: 8px; color: #64748b;">Idade, gênero e estilo de vida</p>
+                </div>
+                <div class="stat-card">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">📱</div>
+                    <div class="stat-label">Comportamento</div>
+                    <p style="font-size: 0.85rem; margin-top: 8px; color: #64748b;">Quem já interagiu com você</p>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">🎯 Exemplo Prático</p>
+                <p>Uma clínica estética pode mostrar anúncios somente para <strong>mulheres de 25 a 45 anos</strong> que moram num <strong>raio de 10 km</strong>, interessadas em <strong>beleza e cuidados com a pele</strong>.</p>
+            </div>
+
+            <p style="margin-top: 20px; font-size: 1.1rem;">
+                <strong class="color-orange">Resultado:</strong> Mais agendamentos, menos desperdício e um público realmente qualificado.
+            </p>
+        </div>`,
+
+        // TURBINAR VS GERENCIADOR (P5)
+        `<div class="page bg-white">
+            <h2 class="color-purple">⚡ "Turbinar" vs Gerenciador de Anúncios</h2>
+
+            <p style="margin-bottom: 25px;">
+                Se você já clicou no botão "Turbinar publicação", provavelmente ficou animado ao ver mais curtidas... mas depois vem a dúvida:
+            </p>
+
+            <div class="warning-box">
+                <p style="font-weight: bold; text-align: center; font-size: 1.1rem;">
+                    "Por que tanta gente curtiu e ninguém comprou?" 🤔
+                </p>
+            </div>
+
+            <h3 class="color-royal">📱 O que é "Turbinar" um Post?</h3>
+            <div class="info-box">
+                <p>✅ Jeito mais simples e rápido de fazer um anúncio<br>
+                ❌ Também o mais limitado<br>
+                ⚠️ Sem controle total sobre quem vê, onde aparece e o que acontece depois</p>
+                <p style="margin-top: 15px; font-weight: bold;">
+                    Em resumo: turbinar é ótimo para ganhar visibilidade, mas ruim para gerar vendas e medir resultados reais.
+                </p>
+            </div>
+
+            <h3 class="color-royal">🎯 O que é o Gerenciador de Anúncios?</h3>
+            <div class="success-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">É a plataforma profissional do Meta (Facebook e Instagram)</p>
+                <p>Com ele, você tem acesso a:</p>
+                <p style="margin-top: 10px;">
+                    ✅ Objetivos de conversão (mensagens, vendas)<br>
+                    ✅ Públicos personalizados<br>
+                    ✅ Métricas reais (custo por mensagem, clique)<br>
+                    ✅ Testes A/B de múltiplas versões
+                </p>
+            </div>
+        </div>`,
+
+        // COMPARAÇÃO VISUAL (P6)
+        `<div class="page bg-light">
+            <h2 class="color-royal">📊 Comparação Lado a Lado</h2>
+
+            <div class="comparison-table">
+                <div class="table-row table-header">
+                    <div>Recurso</div>
+                    <div>Turbinar</div>
+                    <div>Gerenciador</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Objetivo</strong></div>
+                    <div>Curtidas</div>
+                    <div style="color: #10b981;">✓ Conversões</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Controle</strong></div>
+                    <div>Baixo</div>
+                    <div style="color: #10b981;">✓ Alto</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Métricas</strong></div>
+                    <div>Básicas</div>
+                    <div style="color: #10b981;">✓ Completas</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Retorno</strong></div>
+                    <div>Engajamento</div>
+                    <div style="color: #10b981;">✓ Vendas</div>
+                </div>
+            </div>
+
+            <div class="tip-box" style="margin-top: 30px;">
+                <p style="font-weight: bold; margin-bottom: 10px;">💡 Exemplo Prático: Ótica Local</p>
+                <p><strong>Turbinando:</strong> O anúncio vai para "pessoas que têm mais chance de curtir" — mas não necessariamente para quem quer comprar óculos.</p>
+                <p style="margin-top: 15px;"><strong>No Gerenciador:</strong> Você configura para alcançar pessoas próximas à loja, interessadas em moda/visão, com objetivo "enviar mensagem no WhatsApp".</p>
+                <p style="margin-top: 15px; font-weight: bold; color: #10b981;">📈 Resultado: Menos curtidas, mas mais conversas reais e agendamentos!</p>
+            </div>
+        </div>`,
+
+        // BENEFÍCIOS DO TRÁFEGO PAGO (P7)
+        `<div class="page bg-white">
+            <h2 class="color-orange">🚀 Benefícios do Tráfego Pago Local</h2>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">📘 Conceito</p>
+                <p>O tráfego pago é mais do que "aparecer na internet". É uma <strong>estratégia de aceleração de resultados</strong> que coloca sua marca na frente das pessoas certas, no momento certo.</p>
+            </div>
+
+            <h3 class="color-purple">✨ O que ele proporciona:</h3>
+
+            <div style="margin: 25px 0;">
+                <div class="stat-card" style="margin-bottom: 15px;">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">🎯</div>
+                    <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">Visibilidade Qualificada</div>
+                    <p style="font-size: 0.9rem; color: #64748b;">Seu negócio aparece para quem está perto e tem interesse real</p>
+                </div>
+
+                <div class="stat-card" style="margin-bottom: 15px;">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">💰</div>
+                    <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">Aumento de Vendas</div>
+                    <p style="font-size: 0.9rem; color: #64748b;">Gera mais agendamentos e vendas consistentes</p>
+                </div>
+
+                <div class="stat-card" style="margin-bottom: 15px;">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">📊</div>
+                    <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">Previsibilidade Financeira</div>
+                    <p style="font-size: 0.9rem; color: #64748b;">Você sabe quanto investir para atingir suas metas</p>
+                </div>
+
+                <div class="stat-card">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">⚙️</div>
+                    <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">Máquina de Clientes</div>
+                    <p style="font-size: 0.9rem; color: #64748b;">Transforma o digital em fonte contínua de clientes</p>
+                </div>
+            </div>
+        </div>`,
+
+        // EXEMPLOS POR SEGMENTO (P8)
+        `<div class="page bg-white">
+            <h2 class="color-royal">💼 Como Diferentes Negócios se Beneficiam</h2>
+
+            <div class="success-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">🧖♀️ Clínica Estética</p>
+                <p>✅ Anúncios segmentados para mulheres da região<br>
+                ✅ Depoimentos e resultados reais<br>
+                ✅ Agendamentos diretos via WhatsApp<br>
+                <strong style="color: #10b981;">📊 Resultado: Agenda cheia e aumento no faturamento</strong></p>
+            </div>
+
+            <div class="success-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">🍽️ Restaurante</p>
+                <p>✅ Promoções do dia para pessoas a até 5 km<br>
+                ✅ Fotos irresistíveis e botões "Pedir Agora"<br>
+                ✅ Impulsionar dias de baixo movimento<br>
+                <strong style="color: #10b981;">📊 Resultado: Mesas cheias mesmo em dias fracos</strong></p>
+            </div>
+
+            <div class="success-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">💇♂️ Salão/Barbearia</p>
+                <p>✅ Promoção de pacotes e serviços<br>
+                ✅ Remarketing para quem visitou o perfil<br>
+                ✅ Transformações visuais (antes e depois)<br>
+                <strong style="color: #10b981;">📊 Resultado: Novos clientes e fidelização</strong></p>
+            </div>
+
+            <div class="tip-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">💡 Lembre-se:</p>
+                <p>Pense no tráfego pago como <strong>energia elétrica para o seu negócio digital</strong>. Quando você liga o "botão", a energia (clientes) começa a fluir — e você decide quanto quer iluminar.</p>
+            </div>
+        </div>`,
+
+        // QUANDO INVESTIR (P9)
+        `<div class="page bg-white">
+            <h2 class="color-purple">⏰ Quando Investir: Pré-Requisitos Mínimos</h2>
+
+            <p style="margin-bottom: 25px;">
+                Investir em tráfego pago no momento certo pode mudar o destino do seu negócio. Mas investir sem estar preparado é como colocar gasolina em um carro com o motor desligado.
+            </p>
+
+            <div class="warning-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">⚠️ Conceito Fundamental</p>
+                <p>O tráfego pago <strong>não cria demanda do zero</strong> — ele <strong>amplifica o que já existe</strong>.</p>
+                <p style="margin-top: 10px;">O tráfego é o megafone. Se a mensagem estiver errada, ele só faz o erro chegar mais rápido a mais pessoas.</p>
+            </div>
+
+            <h3 class="color-royal">✅ Os 3 Pilares de Prontidão</h3>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">1️⃣ Estrutura Digital Preparada</p>
+                <p>📱 Perfil no Instagram ou página profissional ativa<br>
+                💬 WhatsApp Business configurado<br>
+                🎨 Identidade visual coerente (fotos de qualidade, logo)</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">2️⃣ Oferta Validada</p>
+                <p>✅ Você já vendeu ou prestou o serviço antes<br>
+                ✅ Existe demanda local real pelo seu produto<br>
+                ✅ Sua oferta tem clareza de valor</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">3️⃣ Atendimento Preparado</p>
+                <p>⚡ Resposta rápida a mensagens<br>
+                🎯 Funil definido: Anúncio → Conversa → Venda<br>
+                📝 Padrão de resposta para converter curiosos em clientes</p>
+            </div>
+        </div>`,
+
+        // CHECKLIST DE PRONTIDÃO (P10) - *ALTERADO*
+        `<div class="page bg-light">
+            <h2 class="color-orange">📋 Checklist de Prontidão</h2>
+
+            <p style="margin-bottom: 25px; font-weight: bold;">
+                Antes de investir, verifique se você atende a estes critérios:
+            </p>
+
+            <div class="checklist-item">
+                ${checkbox('c10_item1')}
+                <label for="c10_item1">Perfil profissional (Instagram/Facebook/Google) está completo e ativo</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c10_item2')}
+                <label for="c10_item2">Tenho link direto para contato (WhatsApp ou página de agendamento)</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c10_item3')}
+                <label for="c10_item3">Já validei minha oferta (pelo menos alguns clientes satisfeitos)</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c10_item4')}
+                <label for="c10_item4">Tenho criativos (fotos ou vídeos) que representam bem meu serviço</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c10_item5')}
+                <label for="c10_item5">Sei quem é meu público local (idade, gênero, localização, interesses)</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c10_item6')}
+                <label for="c10_item6">Tenho tempo ou equipe para responder mensagens rapidamente</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c10_item7')}
+                <label for="c10_item7">Sei qual é meu objetivo inicial (vender, agendar, gerar leads)</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c10_item8')}
+                <label for="c10_item8">Estou disposto a investir e acompanhar resultados por 30 dias</label>
+            </div>
+
+            <div class="success-box" style="margin-top: 30px;">
+                <p style="font-weight: bold; text-align: center; font-size: 1.1rem;">
+                    🎯 Se você marcou a maioria com "sim", você já tem base sólida para começar!
+                </p>
+            </div>
+        </div>`,
+
+        // PLANEJAMENTO (P11)
+        `<div class="page bg-white">
+            <h2 class="color-royal">🎯 Planejamento: A Base do Sucesso</h2>
+
+            <div class="quote">
+                "Sem planejamento, até o melhor anúncio do mundo não funciona. Com planejamento, até uma campanha simples pode gerar vendas previsíveis."
+            </div>
+
+            <p style="margin: 25px 0;">
+                O planejamento é o mapa do tráfego pago. Antes de subir o primeiro anúncio, você precisa definir <strong>quatro pontos essenciais</strong>:
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">🎯</div>
+                    <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">Objetivo</div>
+                    <p style="font-size: 0.85rem; color: #64748b;">O que você quer conquistar</p>
+                </div>
+
+                <div class="stat-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">👥</div>
+                    <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">Público</div>
+                    <p style="font-size: 0.85rem; color: #64748b;">Quem você quer alcançar</p>
+                </div>
+
+                <div class="stat-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">💎</div>
+                    <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">Oferta</div>
+                    <p style="font-size: 0.85rem; color: #64748b;">O que você vai entregar</p>
+                </div>
+
+                <div class="stat-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">🧭</div>
+                    <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">Jornada</div>
+                    <p style="font-size: 0.85rem; color: #64748b;">O caminho até a compra</p>
+                </div>
+            </div>
+
+            <div class="tip-box" style="margin-top: 30px;">
+                <p style="font-weight: bold; margin-bottom: 10px;">💡 Analogia Útil</p>
+                <p>Tráfego pago sem planejamento é como ligar um GPS sem colocar o destino: você anda, mas não chega a lugar nenhum.</p>
+            </div>
+        </div>`,
+
+        // DEFININDO OBJETIVO (P12)
+        `<div class="page bg-white">
+            <h2 class="color-purple">🎯 1. Definindo o Objetivo Certo</h2>
+
+            <p style="margin-bottom: 25px;">
+                Cada campanha deve ter <strong>um único objetivo</strong>, alinhado ao momento atual do seu negócio.
+            </p>
+
+            <div class="comparison-table">
+                <div class="table-row table-header">
+                    <div>Etapa</div>
+                    <div>Objetivo</div>
+                    <div>Campanha</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Novo no digital</strong></div>
+                    <div>Reconhecimento local</div>
+                    <div>Alcance</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Quer clientes</strong></div>
+                    <div>Mensagens e agendamentos</div>
+                    <div style="color: #10b981;">✓ Mensagens</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Já tem base</strong></div>
+                    <div>Vender para quem conhece</div>
+                    <div>Remarketing</div>
+                </div>
+            </div>
+
+            <div class="success-box" style="margin-top: 30px;">
+                <p style="font-weight: bold; margin-bottom: 10px;">💡 Dica Pro</p>
+                <p>Comece com o objetivo <strong>"Mensagens no WhatsApp"</strong> — é direto, fácil de mensurar e gera conversas reais com potenciais clientes.</p>
+            </div>
+
+            <h3 class="color-royal">👥 2. Conhecendo Seu Público Local</h3>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">📝 Exemplo de Persona Real</p>
+                <p><strong>Nome:</strong> Juliana, 32 anos, empresária<br>
+                <strong>Mora:</strong> Próximo ao centro da cidade<br>
+                <strong>Dores:</strong> Não tem tempo para cuidar da aparência<br>
+                <strong>Desejo:</strong> Sentir-se mais confiante e bem cuidada<br>
+                <strong>Busca:</strong> Praticidade, resultados rápidos e atendimento atencioso</p>
+            </div>
+
+            <p style="margin-top: 20px; font-weight: bold; color: #f97316;">
+                💡 Quanto mais você entende o público, mais fácil é criar anúncios que "conversam" com ele.
+            </p>
+        </div>`,
+
+        // OFERTA IRRESISTÍVEL (P13)
+        `<div class="page bg-white">
+            <h2 class="color-orange">💎 3. Criando uma Oferta Irresistível</h2>
+
+            <p style="margin-bottom: 25px;">
+                Sua oferta é o <strong>motivo pelo qual o cliente vai agir agora</strong>. Não basta dizer o que você vende — é preciso mostrar o valor e o benefício.
+            </p>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 15px; font-size: 1.1rem;">🧬 Fórmula da Oferta Irresistível</p>
+                <p style="text-align: center; background: white; padding: 15px; border-radius: 10px; font-weight: bold; color: #2563eb;">
+                    [Serviço/Produto] + [Benefício Claro] + [Prova/Garantia] + [Ação Direta]
+                </p>
+            </div>
+
+            <div class="success-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">✅ Exemplo Transformado</p>
+                <p><strong style="color: #dc2626;">❌ Ruim:</strong> "Limpeza de pele por R$ 149"</p>
+                <p style="margin-top: 10px;"><strong style="color: #10b981;">✅ Bom:</strong> "Limpeza de pele profunda com hidratação e massagem facial — agende hoje e ganhe uma avaliação gratuita"</p>
+            </div>
+
+            <div class="tip-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">💡 Gatilhos Poderosos</p>
+                <p>⏰ <strong>Escassez:</strong> "Somente essa semana"<br>
+                🎁 <strong>Bônus:</strong> "Ganhe avaliação gratuita"<br>
+                👥 <strong>Exclusividade:</strong> "Para as 10 primeiras pessoas"<br>
+                ⭐ <strong>Prova Social:</strong> "Mais de 200 clientes satisfeitos"</p>
+            </div>
+
+            <h3 class="color-royal">🧭 4. Mapeando a Jornada do Cliente</h3>
+
+            <p style="margin: 20px 0;">
+                O cliente não compra na primeira vez que te vê. Ele precisa passar por etapas até confiar e agir.
+            </p>
+        </div>`,
+
+        // JORNADA DO CLIENTE (P14)
+        `<div class="page bg-light">
+            <h2 class="color-purple">🗺️ Jornada do Cliente Local</h2>
+
+            <div class="comparison-table">
+                <div class="table-row table-header">
+                    <div>Etapa</div>
+                    <div>Objetivo</div>
+                    <div>Tipo de Anúncio</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>1. Descoberta</strong></div>
+                    <div>Fazer conhecer a marca</div>
+                    <div>Vídeo curto / Post</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>2. Interesse</strong></div>
+                    <div>Mostrar autoridade</div>
+                    <div>Depoimentos / Antes e depois</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>3. Ação</strong></div>
+                    <div>Converter em contato</div>
+                    <div style="color: #10b981;">✓ CTA para WhatsApp</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>4. Fidelização</strong></div>
+                    <div>Cliente voltando</div>
+                    <div>Remarketing / Promoções</div>
+                </div>
+            </div>
+
+            <div class="info-box" style="margin-top: 30px;">
+                <p style="font-weight: bold; margin-bottom: 15px;">📝 Oficina Estratégica: Planeje Sua Primeira Campanha</p>
+                <p style="margin-bottom: 10px;"><strong>🎯 Qual o principal objetivo?</strong><br>
+                (Ex: gerar mensagens, agendamentos, vendas)</p>
+                <p style="margin-bottom: 10px;"><strong>👥 Quem é seu público ideal?</strong><br>
+                (Ex: mulheres 25-45 anos, até 10 km da clínica)</p>
+                <p style="margin-bottom: 10px;"><strong>💎 Qual é sua oferta irresistível?</strong><br>
+                (Ex: "Primeira sessão com 20% de desconto")</p>
+                <p><strong>🧭 Como o cliente chega até você?</strong><br>
+                (Ex: vê anúncio → clica → fala no WhatsApp → agenda)</p>
+            </div>
+
+            <div class="success-box" style="margin-top: 25px;">
+                <p style="font-weight: bold; text-align: center;">
+                    ✨ Essas quatro respostas são o DNA da sua campanha!
+                </p>
+            </div>
+        </div>`,
+
+        // FERRAMENTAS ESSENCIAIS (P15)
+        `<div class="page bg-white">
+            <h2 class="color-royal">🛠️ Ferramentas Essenciais</h2>
+
+            <p style="margin-bottom: 25px;">
+                Para criar campanhas que realmente dão resultado, você precisa de ferramentas que trabalham juntas, <strong>coletando dados, otimizando resultados</strong> e mostrando onde o investimento traz retorno.
+            </p>
+
+            <div class="warning-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">⚙️ Pense nelas como engrenagens de um motor:</p>
+                <p>Se uma falhar, o carro até anda... mas gasta mais e vai mais devagar.</p>
+            </div>
+
+            <h3 class="color-purple">🔧 As 5 Ferramentas Fundamentais</h3>
+
+            <div class="stat-card" style="margin-bottom: 15px;">
+                <div style="font-size: 2rem; margin-bottom: 10px;">📊</div>
+                <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">1. Gerenciador de Anúncios</div>
+                <p style="font-size: 0.9rem; color: #64748b;">Central de controle das campanhas</p>
+            </div>
+
+            <div class="stat-card" style="margin-bottom: 15px;">
+                <div style="font-size: 2rem; margin-bottom: 10px;">🎯</div>
+                <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">2. Pixel da Meta</div>
+                <p style="font-size: 0.9rem; color: #64748b;">Sensor que rastreia ações do usuário</p>
+            </div>
+
+            <div class="stat-card" style="margin-bottom: 15px;">
+                <div style="font-size: 2rem; margin-bottom: 10px;">🛒</div>
+                <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">3. Catálogo de Produtos</div>
+                <p style="font-size: 0.9rem; color: #64748b;">Para anúncios dinâmicos com produtos</p>
+            </div>
+
+            <div class="stat-card" style="margin-bottom: 15px;">
+                <div style="font-size: 2rem; margin-bottom: 10px;">🔍</div>
+                <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">4. Google Ads</div>
+                <p style="font-size: 0.9rem; color: #64748b;">Para capturar quem já está procurando</p>
+            </div>
+
+            <div class="stat-card">
+                <div style="font-size: 2rem; margin-bottom: 10px;">💬</div>
+                <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">5. WhatsApp Business</div>
+                <p style="font-size: 0.9rem; color: #64748b;">Atendimento rápido e organizado</p>
+            </div>
+        </div>`,
+
+        // PIXEL DA META (P16)
+        `<div class="page bg-white">
+            <h2 class="color-purple">🎯 Pixel da Meta: O Sensor Inteligente</h2>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">🧩 O que é o Pixel?</p>
+                <p>É um código que você instala no seu site/página e que <strong>rastreia ações</strong> como cliques, visitas, mensagens e compras.</p>
+                <p style="margin-top: 10px;">Isso permite que a plataforma <strong>aprenda quem tem mais chance de converter</strong>.</p>
+            </div>
+
+            <h3 class="color-royal">📋 Passo a Passo Simplificado</h3>
+
+            <div style="background: white; padding: 20px; border-radius: 15px; border-left: 4px solid #2563eb; margin: 20px 0;">
+                <p style="font-weight: bold; margin-bottom: 15px;">1️⃣ Acesse o Gerenciador de Eventos (Meta Business)</p>
+                <p style="font-weight: bold; margin-bottom: 15px;">2️⃣ Clique em "Adicionar Fonte de Dados" → "Pixel da Web"</p>
+                <p style="font-weight: bold; margin-bottom: 15px;">3️⃣ Dê um nome (ex: "Pixel – Clínica Beleza Mais")</p>
+                <p style="font-weight: bold; margin-bottom: 15px;">4️⃣ Copie o código e instale no seu site</p>
+                <p style="font-weight: bold;">5️⃣ Teste com a extensão Meta Pixel Helper (Chrome)</p>
+            </div>
+
+            <div class="tip-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">💡 Dica Essencial</p>
+                <p>Instale o Pixel <strong>assim que possível</strong>, mesmo que ainda não vá anunciar. Ele começa a coletar dados automaticamente e deixará suas futuras campanhas muito mais inteligentes!</p>
+            </div>
+
+            <div class="success-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">✅ Como saber se está funcionando?</p>
+                <p>Bolinha verde no Gerenciador de Eventos = tudo certo! 🟢</p>
+            </div>
+        </div>`,
+
+        // GERENCIADOR DE ANÚNCIOS (P17)
+        `<div class="page bg-white">
+            <h2 class="color-royal">🧠 Gerenciador de Anúncios: Onde a Mágica Acontece</h2>
+
+            <p style="margin-bottom: 25px;">
+                O Gerenciador de Anúncios é onde você define objetivo, público, orçamento, criativos e métricas — tudo com <strong>controle total</strong>.
+            </p>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 15px;">📋 Estrutura Resumida (3 Níveis)</p>
+                <p style="margin-bottom: 10px;"><strong style="color: #2563eb;">1️⃣ Campanha:</strong> Define o objetivo (ex: mensagens, tráfego)</p>
+                <p style="margin-bottom: 10px;"><strong style="color: #8b5cf6;">2️⃣ Conjunto de Anúncios:</strong> Define público, orçamento e posicionamento</p>
+                <p><strong style="color: #f97316;">3️⃣ Anúncios:</strong> Contém criativos, textos e links</p>
+            </div>
+
+            <div class="comparison-table" style="margin: 30px 0;">
+                <div class="table-row table-header">
+                    <div>Nível</div>
+                    <div>Função</div>
+                    <div>Exemplo</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Campanha</strong></div>
+                    <div>Define o objetivo</div>
+                    <div>"Mensagens WhatsApp"</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Conjunto</strong></div>
+                    <div>Define quem e quanto</div>
+                    <div>"Mulheres 25-45, R$30/dia"</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Anúncio</strong></div>
+                    <div>O que o cliente vê</div>
+                    <div>"Foto + texto + botão"</div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">💡 Dica Pro</p>
+                <p>Evite "turbinar post" direto do Instagram. O Gerenciador te dá dados completos, como <strong>custo por mensagem, CTR, frequência e ROI</strong>.</p>
+            </div>
+        </div>`,
+
+        // CRIATIVOS QUE CONVERTEM (P18)
+        `<div class="page bg-white">
+            <h2 class="color-orange">🎨 Criativos e Copy que Convertem</h2>
+
+            <div class="quote">
+                "O anúncio é só a ponta do iceberg. O criativo é o que faz o cliente parar de rolar o feed e pensar: 'Isso é pra mim'."
+            </div>
+
+            <p style="margin: 25px 0;">
+                Nos anúncios de negócios locais, as pessoas não querem ver celebridades. Elas querem ver o <strong>bairro, o sotaque, o jeito da cidade</strong>.
+            </p>
+
+            <div class="success-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">✨ O Segredo da Proximidade</p>
+                <p>Mostre <strong>pessoas reais, situações reais e resultados reais</strong>. O público nota a diferença!</p>
+            </div>
+
+            <h3 class="color-royal">🧱 Os 3 Elementos do Criativo que Converte</h3>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">📸</div>
+                    <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">Imagem/Vídeo</div>
+                    <p style="font-size: 0.85rem; color: #64748b;">Chama atenção visualmente</p>
+                </div>
+
+                <div class="stat-card">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">✍️</div>
+                    <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">Copy (Texto)</div>
+                    <p style="font-size: 0.85rem; color: #64748b;">Cria conexão e curiosidade</p>
+                </div>
+
+                <div class="stat-card">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">👆</div>
+                    <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">CTA (Chamada)</div>
+                    <p style="font-size: 0.85rem; color: #64748b;">Diz o que fazer</p>
+                </div>
+            </div>
+
+            <div class="tip-box" style="margin-top: 30px;">
+                <p style="font-weight: bold; margin-bottom: 10px;">💡 Dica de Ouro</p>
+                <p>Evite usar apenas imagens de banco. <strong>Pessoas reais geram até 3x mais engajamento</strong> que fotos genéricas. Basta usar o celular com boa luz natural!</p>
+            </div>
+        </div>`,
+
+        // FÓRMULA AIDA (P19)
+        `<div class="page bg-white">
+            <h2 class="color-purple">✍️ Fórmula de Copy: AIDA</h2>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 15px; font-size: 1.1rem;">🧬 Modelo AIDA Adaptado</p>
+                <p style="margin-bottom: 8px;"><strong style="color: #2563eb;">A</strong>tenção: Destaque a dor ou desejo</p>
+                <p style="margin-bottom: 8px;"><strong style="color: #8b5cf6;">I</strong>nteresse: Mostre o benefício da solução</p>
+                <p style="margin-bottom: 8px;"><strong style="color: #f97316;">D</strong>esejo: Comprove com autoridade ou resultado</p>
+                <p><strong style="color: #10b981;">A</strong>ção: Diga o que fazer agora</p>
+            </div>
+
+            <h3 class="color-royal">🧴 Exemplo: Clínica Estética</h3>
+            <div style="background: #f8fafc; padding: 20px; border-radius: 15px; border-left: 4px solid #8b5cf6; margin: 20px 0;">
+                <p style="margin-bottom: 10px;"><strong>😣 Atenção:</strong> Cansada de se olhar no espelho e não gostar do que vê?</p>
+                <p style="margin-bottom: 10px;"><strong>💆♀️ Interesse:</strong> Nosso tratamento facial revitaliza sua pele desde a primeira sessão.</p>
+                <p style="margin-bottom: 10px;"><strong>⭐ Desejo:</strong> Resultados reais com profissionais certificados e equipamentos de ponta.</p>
+                <p><strong>👉 Ação:</strong> Clique em "Enviar mensagem" e agende sua avaliação gratuita!</p>
+            </div>
+
+            <h3 class="color-royal">🍝 Exemplo: Restaurante</h3>
+            <div style="background: #f8fafc; padding: 20px; border-radius: 15px; border-left: 4px solid #f97316; margin: 20px 0;">
+                <p style="margin-bottom: 10px;"><strong>🍽️ Atenção:</strong> Já experimentou o sabor que virou febre no bairro?</p>
+                <p style="margin-bottom: 10px;"><strong>💚 Interesse:</strong> O novo prato da casa está conquistando quem ama comida feita com carinho.</p>
+                <p><strong>📲 Ação:</strong> Peça agora pelo WhatsApp e receba quentinho na sua porta!</p>
+            </div>
+
+            <h3 class="color-royal">👓 Exemplo: Ótica</h3>
+            <div style="background: #f8fafc; padding: 20px; border-radius: 15px; border-left: 4px solid #2563eb; margin: 20px 0;">
+                <p style="margin-bottom: 10px;"><strong>👀 Atenção:</strong> Tá na dúvida se precisa trocar seus óculos?</p>
+                <p style="margin-bottom: 10px;"><strong>✨ Interesse:</strong> Faça um teste gratuito de visão e conheça nossas armações exclusivas.</p>
+                <p><strong>💬 Ação:</strong> Fale com nossa equipe e descubra o modelo ideal pra você!</p>
+            </div>
+        </div>`,
+
+        // ORÇAMENTO E LANCES (P20)
+        `<div class="page bg-white">
+            <h2 class="color-orange">💰 Orçamento e Lances: Por Onde Começar</h2>
+
+            <div class="quote">
+                "O orçamento ideal não é o mais alto, é o suficiente para gerar dados que te permitam tomar boas decisões."
+            </div>
+
+            <h3 class="color-royal">💵 Quanto Investir para Começar?</h3>
+
+            <div class="comparison-table">
+                <div class="table-row table-header">
+                    <div>Tipo de Negócio</div>
+                    <div>Ticket Médio</div>
+                    <div>Orçamento/Dia</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Barbearia/Restaurante</strong></div>
+                    <div>até R$80</div>
+                    <div style="color: #10b981;">R$20-30</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Clínica/Estética</strong></div>
+                    <div>R$150-400</div>
+                    <div style="color: #f97316;">R$40-60</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Imobiliária/Academia</strong></div>
+                    <div>R$500+</div>
+                    <div style="color: #dc2626;">R$80-100</div>
+                </div>
+            </div>
+
+            <div class="tip-box" style="margin-top: 30px;">
+                <p style="font-weight: bold; margin-bottom: 10px;">💡 Objetivo dos Primeiros Testes</p>
+                <p>Descobrir <strong>qual público e criativo converte mais barato</strong> — não tentar vender tudo de uma vez!</p>
+            </div>
+
+            <h3 class="color-purple">📊 Fórmula do Valor Mínimo Viável (VMV)</h3>
+
+            <div style="background: #e0e7ff; padding: 20px; border-radius: 15px; text-align: center; margin: 20px 0;">
+                <p style="font-weight: bold; font-size: 1.2rem; color: #2563eb; margin-bottom: 10px;">VMV = (Ticket Médio ÷ 10) ÷ Dias de Teste</p>
+            </div>
+        </div>`,
+
+        // EXEMPLO CÁLCULO (P21)
+        `<div class="page bg-white">
+            <h2 class="color-royal">🧮 Exemplo de Cálculo: Clínica</h2>
+
+            <div class="success-box">
+                <p style="font-weight: bold; margin-bottom: 15px;">📋 Dados do Negócio</p>
+                <p>👉 Clínica com ticket médio de <strong>R$250</strong><br>
+                👉 Quer testar por <strong>10 dias</strong></p>
+                <p style="margin-top: 20px; font-size: 1.2rem; text-align: center; background: white; padding: 15px; border-radius: 10px;">
+                    <strong>VMV = (250 ÷ 10) ÷ 10 = R$25/dia</strong>
+                </p>
+            </div>
+
+            <p style="margin: 25px 0;">
+                Isso garante que cada conjunto tenha verba suficiente para gerar pelo menos <strong>5 a 10 mensagens reais</strong>, permitindo decisões baseadas em dados.
+            </p>
+
+            <h3 class="color-purple">📈 Como Escalar Sem Queimar Dinheiro</h3>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 15px;">🎯 Método de Escala Segura (20%)</p>
+                <p><strong>1️⃣</strong> Espere 3 a 5 dias com resultado estável</p>
+                <p><strong>2️⃣</strong> Se o CPR estiver dentro da meta, aumente apenas 20%</p>
+                <p><strong>3️⃣</strong> Nunca dobre o investimento de um dia pro outro</p>
+            </div>
+
+            <div class="warning-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">⚠️ Por que não dobrar?</p>
+                <p>Aumentos bruscos "resetam" o aprendizado do algoritmo. Aumente gradualmente para manter a performance!</p>
+            </div>
+
+            <div style="background: #f8fafc; padding: 20px; border-radius: 15px; margin: 25px 0;">
+                <p style="font-weight: bold; margin-bottom: 15px;">📊 Exemplo Prático de Escala</p>
+                <p>💰 Orçamento atual: <strong>R$50/dia</strong><br>
+                ✅ ROI positivo após 5 dias</p>
+                <p style="margin-top: 15px; color: #10b981;"><strong>✅ Escala segura:</strong> R$60/dia</p>
+                <p style="color: #dc2626;"><strong>❌ Escala arriscada:</strong> R$100/dia de uma vez</p>
+            </div>
+        </div>`,
+
+        // SEGMENTAÇÃO LOCAL (P22)
+        `<div class="page bg-white">
+            <h2 class="color-purple">📍 Segmentação Local</h2>
+
+            <div class="quote">
+                "Segmentar bem é como mirar com precisão um laser, enquanto a maioria ainda usa uma lanterna."
+            </div>
+
+            <h3 class="color-royal">🎯 O Que é Segmentação Local?</h3>
+
+            <p style="margin: 20px 0;">
+                Segmentação é o processo de escolher <strong>quem verá seus anúncios</strong>:
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">📍</div>
+                    <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">Onde</div>
+                    <p style="font-size: 0.85rem; color: #64748b;">Cidade, bairro, raio</p>
+                </div>
+
+                <div class="stat-card">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">👤</div>
+                    <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">Quem</div>
+                    <p style="font-size: 0.85rem; color: #64748b;">Idade, gênero, interesses</p>
+                </div>
+
+                <div class="stat-card">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">🎭</div>
+                    <div style="font-weight: bold; color: #1e293b; margin-bottom: 5px;">Como</div>
+                    <p style="font-size: 0.85rem; color: #64748b;">Comportamento e interações</p>
+                </div>
+            </div>
+
+            <h3 class="color-orange" style="margin-top: 30px;">🗺️ Raio de Atuação Recomendado</h3>
+
+            <div class="comparison-table">
+                <div class="table-row table-header">
+                    <div>Tipo de Negócio</div>
+                    <div>Raio Ideal</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Barbearia/Restaurante</strong></div>
+                    <div style="color: #10b981;">2-5 km</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Clínica/Academia</strong></div>
+                    <div style="color: #f97316;">5-10 km</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Serviço Domiciliar</strong></div>
+                    <div style="color: #8b5cf6;">Até 15 km</div>
+                </div>
+            </div>
+        </div>`,
+
+        // TIPOS DE AUDIÊNCIA (P23)
+        `<div class="page bg-white">
+            <h2 class="color-royal">👥 4 Tipos de Audiência</h2>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">1️⃣ Público Salvo (Interesses)</p>
+                <p>Segmentação manual por idade, localização e interesses</p>
+                <p style="margin-top: 8px; color: #64748b;"><strong>Quando usar:</strong> Fase inicial (descoberta)</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">2️⃣ Público Personalizado</p>
+                <p>Pessoas que já interagiram com você (site, WhatsApp, Instagram)</p>
+                <p style="margin-top: 8px; color: #64748b;"><strong>Quando usar:</strong> Fase de relacionamento</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">3️⃣ Público Semelhante (Lookalike)</p>
+                <p>Pessoas parecidas com seus melhores clientes</p>
+                <p style="margin-top: 8px; color: #64748b;"><strong>Quando usar:</strong> Fase de escala</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">4️⃣ Remarketing</p>
+                <p>Reimpactar quem demonstrou interesse mas não converteu</p>
+                <p style="margin-top: 8px; color: #64748b;"><strong>Quando usar:</strong> Fase de conversão</p>
+            </div>
+
+            <div class="tip-box" style="margin-top: 30px;">
+                <p style="font-weight: bold; margin-bottom: 10px;">💡 Estratégia do Raio + Interesses</p>
+                <p>Combine localização com interesses específicos — é a fórmula mais eficaz para negócios locais!</p>
+            </div>
+        </div>`,
+
+        // MÉTRICAS E OTIMIZAÇÃO (P24)
+        `<div class="page bg-white">
+            <h2 class="color-orange">📊 Métricas e Otimização</h2>
+
+            <div class="quote">
+                "Quem não mede, não melhora." — Peter Drucker
+            </div>
+
+            <p style="margin: 25px 0;">
+                Saber ler suas métricas é o que transforma anúncios comuns em <strong>campanhas lucrativas</strong>. A boa notícia? Você não precisa ser um analista de dados!
+            </p>
+
+            <h3 class="color-royal">🎯 Métricas-Chave (as que realmente importam)</h3>
+
+            <div class="stat-card" style="margin-bottom: 15px;">
+                <div style="font-weight: bold; color: #1e293b; margin-bottom: 10px;">CPM (Custo por Mil Impressões)</div>
+                <p style="font-size: 0.9rem; color: #64748b;">Quanto você paga para alcançar 1.000 pessoas</p>
+                <p style="margin-top: 8px; font-weight: bold; color: #10b981;">✅ Meta: Abaixo de R$25</p>
+            </div>
+
+            <div class="stat-card" style="margin-bottom: 15px;">
+                <div style="font-weight: bold; color: #1e293b; margin-bottom: 10px;">CPC (Custo por Clique)</div>
+                <p style="font-size: 0.9rem; color: #64748b;">Quanto custa cada clique no anúncio</p>
+                <p style="margin-top: 8px; font-weight: bold; color: #10b981;">✅ Meta: Abaixo de R$1,50</p>
+            </div>
+
+            <div class="stat-card" style="margin-bottom: 15px;">
+                <div style="font-weight: bold; color: #1e293b; margin-bottom: 10px;">CTR (Taxa de Cliques)</div>
+                <p style="font-size: 0.9rem; color: #64748b;">% de pessoas que clicam vs. que viram</p>
+                <p style="margin-top: 8px; font-weight: bold; color: #10b981;">✅ Meta: Acima de 2%</p>
+            </div>
+
+            <div class="stat-card" style="margin-bottom: 15px;">
+                <div style="font-weight: bold; color: #1e293b; margin-bottom: 10px;">CPA (Custo por Aquisição)</div>
+                <p style="font-size: 0.9rem; color: #64748b;">Quanto custa gerar uma conversão</p>
+                <p style="margin-top: 8px; font-weight: bold; color: #10b981;">✅ Meta: Até 10% do ticket médio</p>
+            </div>
+
+            <div class="stat-card">
+                <div style="font-weight: bold; color: #1e293b; margin-bottom: 10px;">ROI (Retorno sobre Investimento)</div>
+                <p style="font-size: 0.9rem; color: #64748b;">Quanto retornou em relação ao investido</p>
+                <p style="margin-top: 8px; font-weight: bold; color: #10b981;">✅ Meta: Acima de 2x</p>
+            </div>
+        </div>`,
+
+        // COMO SABER SE ESTÁ INDO BEM (P25)
+        `<div class="page bg-white">
+            <h2 class="color-purple">🚦 Como Saber se o Anúncio Está Indo Bem?</h2>
+
+            <div class="comparison-table">
+                <div class="table-row table-header">
+                    <div>Métrica</div>
+                    <div>Sinal</div>
+                    <div>Ação</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>CTR < 1%</strong></div>
+                    <div style="color: #dc2626;">🔴 Ruim</div>
+                    <div>Pausar criativo</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>CTR > 2%</strong></div>
+                    <div style="color: #10b981;">🟢 Ótimo</div>
+                    <div>Manter/Escalar</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>CPC > R$2,50</strong></div>
+                    <div style="color: #f97316;">🟡 Alerta</div>
+                    <div>Revisar público</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>CPC < R$1,00</strong></div>
+                    <div style="color: #10b981;">🟢 Excelente</div>
+                    <div>Duplicar teste</div>
+                </div>
+            </div>
+
+            <div class="warning-box" style="margin-top: 30px;">
+                <p style="font-weight: bold; margin-bottom: 10px;">⚠️ Exemplo de Alerta</p>
+                <p><strong style="color: #dc2626;">CTR baixo (< 1%)</strong> = público desinteressado ou criativo fraco</p>
+                <p><strong style="color: #dc2626;">CPC alto + CTR baixo</strong> = anúncio sem apelo</p>
+                <p><strong style="color: #dc2626;">CPA alto</strong> = oferta ou atendimento ineficiente</p>
+            </div>
+
+            <div class="tip-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">💡 Dica Pro</p>
+                <p>Você não precisa acompanhar todas as métricas. Para negócios locais, foque em <strong>CTR, CPC e CPA</strong> — elas contam 80% da história!</p>
+            </div>
+        </div>`,
+
+        // ROTEIRO 30 DIAS (P26)
+        `<div class="page bg-white">
+            <h2 class="color-royal">📅 Roteiro de 30 Dias de Otimização</h2>
+
+            <div class="quote">
+                "A mágica não está em lançar anúncios, e sim em melhorá-los continuamente."
+            </div>
+
+            <h3 class="color-purple">📋 Visão Geral do Mês</h3>
+
+            <div style="background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%); padding: 20px; border-radius: 15px; margin: 20px 0;">
+                <p style="font-weight: bold; margin-bottom: 15px;">🗓️ Semana 1: Diagnóstico</p>
+                <p style="color: #1e293b;">Identificar pontos fortes e fracos das campanhas</p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #fed7aa 0%, #fde68a 100%); padding: 20px; border-radius: 15px; margin: 20px 0;">
+                <p style="font-weight: bold; margin-bottom: 15px;">🗓️ Semana 2: Criativos</p>
+                <p style="color: #1e293b;">Aumentar CTR e reduzir CPC com novos criativos</p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #a7f3d0 0%, #d1fae5 100%); padding: 20px; border-radius: 15px; margin: 20px 0;">
+                <p style="font-weight: bold; margin-bottom: 15px;">🗓️ Semana 3: Públicos</p>
+                <p style="color: #1e293b;">Reduzir CPA e melhorar eficiência da segmentação</p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #ddd6fe 0%, #e0e7ff 100%); padding: 20px; border-radius: 15px; margin: 20px 0;">
+                <p style="font-weight: bold; margin-bottom: 15px;">🗓️ Semana 4: Escala</p>
+                <p style="color: #1e293b;">Tornar o resultado previsível e automatizar</p>
+            </div>
+        </div>`,
+
+        // ERROS COMUNS (P27)
+        `<div class="page bg-white">
+            <h2 class="color-orange">⚠️ 7 Erros Comuns (e Como Evitá-los)</h2>
+
+            <div class="warning-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">❌ Erro #1: Começar sem objetivo claro</p>
+                <p><strong>Problema:</strong> "Quero vender mais" não é objetivo</p>
+                <p style="color: #10b981; margin-top: 8px;"><strong>✅ Solução:</strong> Defina UMA ação exata (mensagens, agendamentos, vendas)</p>
+            </div>
+
+            <div class="warning-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">❌ Erro #2: Usar só o botão "Turbinar"</p>
+                <p><strong>Problema:</strong> Sem controle de segmentação e métricas reais</p>
+                <p style="color: #10b981; margin-top: 8px;"><strong>✅ Solução:</strong> Use o Gerenciador de Anúncios sempre</p>
+            </div>
+
+            <div class="warning-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">❌ Erro #3: Não testar criativos diferentes</p>
+                <p><strong>Problema:</strong> "Fiz um anúncio, não deu certo, desisti"</p>
+                <p style="color: #10b981; margin-top: 8px;"><strong>✅ Solução:</strong> Teste pelo menos 2 imagens/vídeos + 2 textos</p>
+            </div>
+
+            <div class="warning-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">❌ Erro #4: Não instalar o Pixel</p>
+                <p><strong>Problema:</strong> Sem dados = sem remarketing = sem otimização</p>
+                <p style="color: #10b981; margin-top: 8px;"><strong>✅ Solução:</strong> Instale HOJE mesmo, antes de anunciar</p>
+            </div>
+        </div>`,
+
+        // MAIS ERROS (P28)
+        `<div class="page bg-white">
+            <h2 class="color-purple">⚠️ Erros Comuns (continuação)</h2>
+
+            <div class="warning-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">❌ Erro #5: Acompanhar métricas erradas</p>
+                <p><strong>Problema:</strong> Curtidas não pagam boletos</p>
+                <p style="color: #10b981; margin-top: 8px;"><strong>✅ Solução:</strong> Foque em CTR, CPC, CPA e ROI</p>
+            </div>
+
+            <div class="warning-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">❌ Erro #6: Escalar rápido demais</p>
+                <p><strong>Problema:</strong> Dobrar orçamento quebra o algoritmo</p>
+                <p style="color: #10b981; margin-top: 8px;"><strong>✅ Solução:</strong> Aumente apenas 20% a cada 3-5 dias</p>
+            </div>
+
+            <div class="warning-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">❌ Erro #7: Ignorar o pós-anúncio</p>
+                <p><strong>Problema:</strong> Anúncio leva à porta, mas WhatsApp não responde</p>
+                <p style="color: #10b981; margin-top: 8px;"><strong>✅ Solução:</strong> Configure mensagens automáticas e respostas rápidas</p>
+            </div>
+
+            <div class="tip-box" style="margin-top: 30px;">
+                <p style="font-weight: bold; text-align: center; font-size: 1.1rem;">
+                    💡 No tráfego pago, errar não é problema.<br>O problema é não aprender com os dados!
+                </p>
+            </div>
+        </div>`,
+
+        // ROI E ESCALA (P29)
+        `<div class="page bg-white">
+            <h2 class="color-royal">📈 Como Medir ROI e Decidir se Deve Escalar</h2>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 15px; font-size: 1.1rem;">🧮 Fórmula do ROI</p>
+                <p style="text-align: center; background: white; padding: 15px; border-radius: 10px; font-weight: bold; color: #2563eb; font-size: 1.1rem;">
+                    ROI = (Receita - Investimento) ÷ Investimento × 100
+                </p>
+            </div>
+
+            <h3 class="color-purple">💼 Exemplo Prático: Clínica</h3>
+
+            <div class="comparison-table">
+                <div class="table-row table-header">
+                    <div>Item</div>
+                    <div>Valor</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Investimento</strong></div>
+                    <div>R$ 300</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Vendas geradas</strong></div>
+                    <div>12 clientes</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Ticket médio</strong></div>
+                    <div>R$ 100</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>Receita total</strong></div>
+                    <div>R$ 1.200</div>
+                </div>
+                <div class="table-row" style="background: #d1fae5;">
+                    <div><strong>ROI</strong></div>
+                    <div style="font-weight: bold; color: #10b981; font-size: 1.2rem;">300% (3x)</div>
+                </div>
+            </div>
+
+            <div class="success-box" style="margin-top: 30px;">
+                <p style="font-weight: bold; margin-bottom: 10px;">📊 Tradução</p>
+                <p>Para cada R$1 investido, você recebeu R$4 de volta = <strong>Campanha lucrativa!</strong> 🎯</p>
+            </div>
+        </div>`,
+
+        // QUANDO ESCALAR (P30)
+        `<div class="page bg-white">
+            <h2 class="color-orange">🚀 Quando Escalar e Quando Pausar</h2>
+
+            <div class="comparison-table">
+                <div class="table-row table-header">
+                    <div>Situação</div>
+                    <div>Ação</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>ROI acima de 200%</strong></div>
+                    <div style="color: #10b981;">✅ Escalar (+20%/semana)</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>ROI entre 50% e 200%</strong></div>
+                    <div style="color: #f97316;">🟡 Otimizar criativos</div>
+                </div>
+                <div class="table-row">
+                    <div><strong>ROI abaixo de 50%</strong></div>
+                    <div style="color: #dc2626;">🔴 Pausar e revisar</div>
+                </div>
+            </div>
+
+            <div class="tip-box" style="margin-top: 30px;">
+                <p style="font-weight: bold; margin-bottom: 10px;">💡 Dica do Especialista</p>
+                <p>Antes de escalar, valide a <strong>constância</strong>: Um bom ROI em 7 dias seguidos é mais confiável que um pico de 1 dia.</p>
+                <p style="margin-top: 10px; font-weight: bold;">Consistência = segurança para investir mais.</p>
+            </div>
+
+            <h3 class="color-royal">✅ Checklist de Escalada Segura</h3>
+
+            <div class="checklist-item">
+                ${checkbox('c30_item1')}
+                <label for="c30_item1">ROI está acima de 200% por 7 dias?</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c30_item2')}
+                <label for="c30_item2">Anúncio mantém CTR e CPC estáveis?</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c30_item3')}
+                <label for="c30_item3">Atendimento consegue absorver mais clientes?</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c30_item4')}
+                <label for="c30_item4">Estoque ou agenda comporta o aumento?</label>
+            </div>
+
+            <div class="success-box" style="margin-top: 30px;">
+                <p style="font-weight: bold; text-align: center; font-size: 1.1rem;">
+                    🎯 Se todas as respostas forem SIM, você está pronto para escalar!
+                </p>
+            </div>
+        </div>`,
+
+        // CHECKLIST COMPLETO (P31) - *ALTERADO*
+        `<div class="page bg-white">
+            <h2 class="color-purple">📋 Checklist: Do Zero ao Primeiro Anúncio</h2>
+
+            <h3 class="color-royal">🗓️ Semana 1: Preparação (Dias 1-7)</h3>
+
+            <div class="checklist-item">
+                ${checkbox('c31_item1')}
+                <label for="c31_item1">Atualizar perfil profissional (Instagram/Facebook)</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c31_item2')}
+                <label for="c31_item2">Configurar WhatsApp Business completo</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c31_item3')}
+                <label for="c31_item3">Validar oferta (produto + preço + benefício)</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c31_item4')}
+                <label for="c31_item4">Criar portfólio (fotos, vídeos, depoimentos)</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c31_item5')}
+                <label for="c31_item5">Escrever 3 variações de copy</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c31_item6')}
+                <label for="c31_item6">Definir público ideal (idade, localização, dores)</label>
+            </div>
+
+            <h3 class="color-royal" style="margin-top: 30px;">🗓️ Semana 2: Estrutura (Dias 8-14)</h3>
+
+            <div class="checklist-item">
+                ${checkbox('c31_item7')}
+                <label for="c31_item7">Criar conta no Gerenciador de Negócios</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c31_item8')}
+                <label for="c31_item8">Vincular página e Instagram</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c31_item9')}
+                <label for="c31_item9">Instalar Pixel da Meta (se tiver site)</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c31_item10')}
+                <label for="c31_item10">Configurar evento de conversão</label>
+            </div>
+        </div>`,
+
+        // CHECKLIST CONTINUAÇÃO (P32) - *ALTERADO*
+        `<div class="page bg-white">
+            <h2 class="color-orange">📋 Checklist (continuação)</h2>
+
+            <h3 class="color-royal">🗓️ Semana 3: Lançamento (Dias 15-21)</h3>
+
+            <div class="checklist-item">
+                ${checkbox('c32_item1')}
+                <label for="c32_item1">Criar campanha com objetivo de mensagens</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c32_item2')}
+                <label for="c32_item2">Montar 2 conjuntos de anúncios (públicos diferentes)</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c32_item3')}
+                <label for="c32_item3">Criar 2 criativos por conjunto (imagem e vídeo)</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c32_item4')}
+                <label for="c32_item4">Definir orçamento diário (R$30-50/dia)</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c32_item5')}
+                <label for="c32_item5">Publicar e aguardar aprovação</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c32_item6')}
+                <label for="c32_item6">Deixar rodar 3 dias sem alterações</label>
+            </div>
+
+            <h3 class="color-royal" style="margin-top: 30px;">🗓️ Semana 4: Otimização (Dias 22-30)</h3>
+
+            <div class="checklist-item">
+                ${checkbox('c32_item7')}
+                <label for="c32_item7">Verificar métricas principais (CTR, CPC, CPA)</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c32_item8')}
+                <label for="c32_item8">Pausar criativos com CTR < 1%</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c32_item9')}
+                <label for="c32_item9">Duplicar o melhor anúncio</label>
+            </div>
+
+            <div class="checklist-item">
+                ${checkbox('c32_item10')}
+                <label for="c32_item10">Aumentar orçamento 20% se ROI positivo</label>
+            </div>
+        </div>`,
+
+        // MODELOS PRONTOS (P33)
+        `<div class="page bg-white">
+            <h2 class="color-royal">📝 3 Modelos Reais de Anúncios</h2>
+
+            <h3 class="color-purple">🧖♀️ Modelo 1: Clínica Estética</h3>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">🎯 Configuração</p>
+                <p><strong>Objetivo:</strong> Mensagens WhatsApp<br>
+                <strong>Público:</strong> Mulheres 25-45, raio 10km<br>
+                <strong>Orçamento:</strong> R$30/dia<br>
+                <strong>Formato:</strong> Vídeo curto (15s)</p>
+            </div>
+
+            <div style="background: #f8fafc; padding: 20px; border-radius: 15px; margin: 20px 0; border-left: 4px solid #8b5cf6;">
+                <p style="font-weight: bold; margin-bottom: 15px;">✍️ Copy do Anúncio</p>
+                <p style="font-style: italic; color: #1e293b;">
+                "Sua pele é o seu cartão de visita ✨<br><br>
+                Descubra o tratamento facial queridinho das nossas clientes e veja resultados já na primeira sessão!<br><br>
+                ⏰ Vagas limitadas essa semana.<br>
+                📲 Agende seu horário no WhatsApp e garanta sua avaliação gratuita."
+                </p>
+            </div>
+
+            <div class="success-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">📊 Resultados Esperados</p>
+                <p>✅ CTR: 2,5%+<br>
+                ✅ CPC: R$0,80-1,20<br>
+                ✅ CPA: R$8-15</p>
+            </div>
+        </div>`,
+
+        // MODELO RESTAURANTE (P34)
+        `<div class="page bg-white">
+            <h2 class="color-orange">📝 Modelo 2: Restaurante Local</h2>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">🎯 Configuração</p>
+                <p><strong>Objetivo:</strong> Mensagens ou Tráfego<br>
+                <strong>Público:</strong> Raio de 5km<br>
+                <strong>Orçamento:</strong> R$25-40/dia<br>
+                <strong>Formato:</strong> Vídeo ou imagem atrativa</p>
+            </div>
+
+            <div style="background: #f8fafc; padding: 20px; border-radius: 15px; margin: 20px 0; border-left: 4px solid #f97316;">
+                <p style="font-weight: bold; margin-bottom: 15px;">✍️ Copy do Anúncio</p>
+                <p style="font-style: italic; color: #1e293b;">
+                "🍽️ Tá com fome de comida boa e caseira?<br><br>
+                Nosso almoço executivo sai quentinho e com entrega rápida!<br><br>
+                👉 Pratos a partir de R$24,90<br>
+                📲 Peça agora no WhatsApp e receba em até 30 minutos!"
+                </p>
+            </div>
+
+            <div class="tip-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">🎥 Dica de Criativo</p>
+                <p>Grave em luz natural e destaque o <strong>vapor da comida</strong> — desperta desejo imediato!</p>
+            </div>
+
+            <div class="success-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">📊 Resultados Esperados</p>
+                <p>✅ CTR: 3%+<br>
+                ✅ CPC: R$0,60-1,00<br>
+                ✅ CPA: R$6-12</p>
+            </div>
+        </div>`,
+
+        // MODELO ÓTICA (P35)
+        `<div class="page bg-white">
+            <h2 class="color-royal">📝 Modelo 3: Ótica</h2>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">🎯 Configuração</p>
+                <p><strong>Objetivo:</strong> Mensagens WhatsApp<br>
+                <strong>Público:</strong> Homens e mulheres 30-60, região<br>
+                <strong>Orçamento:</strong> R$40/dia<br>
+                <strong>Formato:</strong> Imagem + texto</p>
+            </div>
+
+            <div style="background: #f8fafc; padding: 20px; border-radius: 15px; margin: 20px 0; border-left: 4px solid #2563eb;">
+                <p style="font-weight: bold; margin-bottom: 15px;">✍️ Copy do Anúncio</p>
+                <p style="font-style: italic; color: #1e293b;">
+                "👓 Mude o visual e economize!<br><br>
+                Armações modernas a partir de R$99 — com lentes de qualidade e atendimento personalizado.<br><br>
+                Venha escolher o modelo ideal para o seu rosto.<br><br>
+                📍 [Nome da Ótica] — [Bairro/Cidade]<br>
+                📲 Fale com um especialista agora no WhatsApp."
+                </p>
+            </div>
+
+            <div class="tip-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">📸 Dica de Criativo</p>
+                <p>Mostre 3 armações modernas sobre fundo branco + destaque "A partir de R$99" + botão "Fale Conosco"</p>
+            </div>
+
+            <div class="success-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">📊 Resultados Esperados</p>
+                <p>✅ CTR: 1,8%+<br>
+                ✅ CPC: R$1,20-1,80<br>
+                ✅ CPA: R$4-9</p>
+            </div>
+        </div>`,
+
+        // GLOSSÁRIO (P36)
+        `<div class="page bg-white">
+            <h2 class="color-purple">📚 Glossário: Termos Essenciais</h2>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 8px;">🎯 Tráfego Pago</p>
+                <p style="font-size: 0.9rem;">Investimento em anúncios para atrair pessoas ao seu negócio</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 8px;">📱 Anúncio (Ad)</p>
+                <p style="font-size: 0.9rem;">Conteúdo que aparece para o público: imagem, vídeo, texto e botão</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 8px;">🎨 Criativo</p>
+                <p style="font-size: 0.9rem;">Formato visual do anúncio (imagem, vídeo, carrossel)</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 8px;">✍️ Copy</p>
+                <p style="font-size: 0.9rem;">Texto do anúncio que desperta interesse e leva à ação</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 8px;">🎯 Pixel</p>
+                <p style="font-size: 0.9rem;">Código que rastreia ações do usuário (visitas, cliques, compras)</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 8px;">💰 CPC (Custo por Clique)</p>
+                <p style="font-size: 0.9rem;">Quanto você paga cada vez que alguém clica no anúncio</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 8px;">📊 CTR (Taxa de Cliques)</p>
+                <p style="font-size: 0.9rem;">% de pessoas que clicam em relação a quem viu</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 8px;">🎯 CPA (Custo por Aquisição)</p>
+                <p style="font-size: 0.9rem;">Quanto custa para conquistar um cliente</p>
+            </div>
+        </div>`,
+
+        // GLOSSÁRIO 2 (P37)
+        `<div class="page bg-white">
+            <h2 class="color-royal">📚 Glossário (continuação)</h2>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 8px;">💎 ROAS (Retorno sobre Anúncio)</p>
+                <p style="font-size: 0.9rem;">Quanto o anúncio gera de volta em receita</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 8px;">📈 ROI (Retorno sobre Investimento)</p>
+                <p style="font-size: 0.9rem;">Quanto você ganhou em relação ao que investiu</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 8px;">🔄 Remarketing</p>
+                <p style="font-size: 0.9rem;">Mostrar anúncios para quem já interagiu com sua marca</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 8px;">👥 Lookalike</p>
+                <p style="font-size: 0.9rem;">Audiência semelhante a quem já interagiu ou comprou</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 8px;">🧪 Teste A/B</p>
+                <p style="font-size: 0.9rem;">Comparar duas versões para ver qual performa melhor</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 8px;">👆 CTA (Chamada para Ação)</p>
+                <p style="font-size: 0.9rem;">Frase que convida o usuário a agir ("Agende agora")</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 8px;">📊 Gerenciador de Anúncios</p>
+                <p style="font-size: 0.9rem;">Painel da Meta onde você cria e gerencia campanhas</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 8px;">🚀 Escalar</p>
+                <p style="font-size: 0.9rem;">Aumentar o investimento mantendo a rentabilidade</p>
+            </div>
+        </div>`,
+
+        // FAQ (P38)
+        `<div class="page bg-white">
+            <h2 class="color-orange">❓ FAQ - Perguntas Frequentes</h2>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">1️⃣ Preciso investir muito para começar?</p>
+                <p style="font-size: 0.95rem;">💡 Não! Comece com R$10-20 por dia. O importante é aprender a testar e ajustar antes de escalar.</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">2️⃣ "Turbinar" é igual ao Gerenciador?</p>
+                <p style="font-size: 0.95rem;">🚫 Não! Turbinar é limitado. No Gerenciador você tem controle total e métricas completas.</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">3️⃣ Quantos anúncios criar no início?</p>
+                <p style="font-size: 0.95rem;">🎯 2 a 3 anúncios por campanha são suficientes para testar.</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">4️⃣ Quanto tempo esperar para ver resultados?</p>
+                <p style="font-size: 0.95rem;">⏱️ Pelo menos 5 a 7 dias antes de fazer mudanças. O algoritmo precisa aprender.</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">5️⃣ Como saber se está funcionando bem?</p>
+                <p style="font-size: 0.95rem;">✅ CTR acima de 2%, CPC abaixo de R$1,00 e mensagens/ligações reais chegando.</p>
+            </div>
+        </div>`,
+
+        // FAQ 2 (P39)
+        `<div class="page bg-white">
+            <h2 class="color-purple">❓ FAQ (continuação)</h2>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">6️⃣ Posso anunciar só no Instagram?</p>
+                <p style="font-size: 0.95rem;">💡 Sim, mas é melhor usar Facebook + Instagram juntos. Você paga menos e alcança mais.</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">7️⃣ Preciso de site para anunciar?</p>
+                <p style="font-size: 0.95rem;">📱 Não! Muitos negócios locais usam WhatsApp como destino final.</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">8️⃣ Meu anúncio foi reprovado. E agora?</p>
+                <p style="font-size: 0.95rem;">🚫 Verifique promessas exageradas, antes/depois explícito ou palavras sensíveis. Corrija e reenvie.</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">9️⃣ Como medir o retorno (ROI)?</p>
+                <p style="font-size: 0.95rem;">🧮 Use a fórmula: ROI = (Lucro - Investimento) ÷ Investimento</p>
+            </div>
+
+            <div class="info-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">🔟 E se não tiver tempo de aprender tudo?</p>
+                <p style="font-size: 0.95rem;">🤝 Você pode contar com um gestor de tráfego para acelerar o processo.</p>
+            </div>
+        </div>`,
+
+        // CONCLUSÃO (P40)
+        `<div class="page bg-gradient cover">
+            <h2 style="color: white; text-align: center; margin-bottom: 30px;">🎯 Conclusão</h2>
+
+            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 25px; border-radius: 20px; color: white;">
+                <p style="font-size: 1.1rem; margin-bottom: 20px; line-height: 1.8;">
+                    Se você chegou até aqui, já deu o primeiro passo: <strong>entender que o tráfego pago não é gasto, é investimento</strong> em crescimento previsível.
+                </p>
+
+                <p style="font-size: 1.1rem; margin-bottom: 20px; line-height: 1.8;">
+                    Agora você sabe como planejar, criar e otimizar campanhas que <strong>transformam dados em decisões inteligentes</strong>.
+                </p>
+
+                <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 15px; margin: 25px 0;">
+                    <p style="font-weight: bold; margin-bottom: 15px; font-size: 1.1rem;">✨ O verdadeiro poder está na ação</p>
+                    <p>O conhecimento só se transforma em resultado quando você <strong>aplica, testa e ajusta</strong>.</p>
+                </div>
+
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    Mesmo com pouco investimento, a <strong>constância</strong> é o que constrói marcas sólidas, agendas cheias e negócios locais de sucesso.
+                </p>
+            </div>
+        </div>`,
+
+        // PRÓXIMOS PASSOS (P41)
+        `<div class="page bg-white">
+            <h2 class="color-royal">🚀 Próximos Passos</h2>
+
+            <div style="background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%); padding: 25px; border-radius: 20px; margin: 25px 0;">
+                <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 20px; color: #1e293b;">📈 Daqui pra frente:</p>
+                <p style="margin-bottom: 12px; color: #1e293b;"><strong>1️⃣</strong> Releia os checklists e aplique um passo por dia</p>
+                <p style="margin-bottom: 12px; color: #1e293b;"><strong>2️⃣</strong> Acompanhe as métricas, sem medo de errar</p>
+                <p style="color: #1e293b;"><strong>3️⃣</strong> Se quiser acelerar, conte com um especialista</p>
+            </div>
+
+            <div class="quote">
+                "O tráfego pago é a ponte entre o que você tem e o que seu cliente precisa — e agora, você tem as ferramentas certas para atravessá-la."
+            </div>
+
+            <h3 class="color-purple" style="margin-top: 30px;">👨‍💼 Como Posso Te Ajudar</h3>
+
+            <div class="success-box">
+                <p style="font-weight: bold; margin-bottom: 15px;">💡 Sou Raimundo Silva</p>
+                <p style="margin-bottom: 15px;">Especialista em Gestão de Tráfego Pago e Estratégias de Crescimento Local.</p>
+                <p>Minha missão é ensinar empreendedores a <strong>investir com consciência</strong>, entender seus números e construir campanhas que geram lucro, não só cliques.</p>
+            </div>
+
+            <div class="tip-box">
+                <p style="font-weight: bold; margin-bottom: 10px;">🎁 Bônus Exclusivo</p>
+                <p><strong>Diagnóstico Estratégico de Tráfego Local</strong> — uma análise completa do seu negócio, público e oportunidades (30 minutos gratuitos)</p>
+            </div>
+        </div>`,
+
+        // AGRADECIMENTOS (P42)
+        `<div class="page bg-light">
+            <h2 class="color-orange">🙏 Agradecimentos</h2>
+
+            <p style="font-size: 1.1rem; margin-bottom: 25px; line-height: 1.8;">
+                Antes de encerrar, quero deixar um agradecimento especial a <strong>você, empreendedor local</strong> que decidiu aprender, se reinventar e apostar em estratégias profissionais para crescer.
+            </p>
+
+            <div class="success-box">
+                <p style="font-weight: bold; margin-bottom: 15px;">💚 Cada campanha que você cria tem o poder de:</p>
+                <p>🌍 Gerar empregos<br>
+                💡 Inspirar outros empreendedores<br>
+                ❤️ Transformar o consumo local</p>
+            </div>
+
+            <div class="info-box" style="margin-top: 30px;">
+                <p style="font-weight: bold; margin-bottom: 10px;">🤝 Meu Compromisso</p>
+                <p>Continuar ajudando negócios locais a venderem com <strong>previsibilidade</strong>, sem depender da sorte.</p>
+            </div>
+
+            <div style="background: white; padding: 25px; border-radius: 20px; text-align: center; margin: 30px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <p style="font-size: 1.2rem; font-weight: bold; color: #2563eb; margin-bottom: 15px;">
+                    💙 Obrigado por fazer parte desta jornada!
+                </p>
+                <p style="color: #64748b;">
+                    Nos vemos no próximo passo, nas campanhas que vão transformar seus resultados.
+                </p>
+            </div>
+
+            <div class="quote">
+                "Acredito que o conhecimento certo transforma qualquer negócio. E este guia é o primeiro passo para você transformar o seu."
+            </div>
+        </div>`,
+
+        // PÁGINA FINAL (P43)
+        `<div class="page bg-gradient cover">
+            <div style="text-align: center; color: white;">
+                <h1 style="font-size: 2.2rem; margin-bottom: 20px;">🚀 Seu Crescimento Começa Aqui</h1>
+
+                <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; margin: 30px 0;">
+                    <p style="font-size: 1.3rem; font-weight: bold; margin-bottom: 20px;">
+                        📘 Guia de Tráfego Pago para Negócios Locais
+                    </p>
+                    <p style="font-size: 1.1rem; opacity: 0.95; margin-bottom: 20px;">
+                        Do Zero ao Primeiro Anúncio
+                    </p>
+                    <div style="height: 2px; background: rgba(255,255,255,0.3); margin: 25px 0;"></div>
+                    <p style="font-size: 1rem;">
+                        ✍️ Por <strong>Raimundo Silva</strong><br>
+                        Especialista em Tráfego Pago Estratégico
+                    </p>
+                </div>
+
+                <div class="rocket" style="font-size: 4rem; margin: 40px 0;">🎯</div>
+
+                <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 15px;">
+                    Transforme visibilidade em resultados reais
+                </p>
+
+                <p style="font-size: 1rem; opacity: 0.9; margin-top: 30px;">
+                    © 2025 - Todos os direitos reservados
+                </p>
+
+                <div style="margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 15px;">
+                    <p style="font-size: 0.9rem; opacity: 0.85;">
+                        📧 Contato: suporte@raihsilvapro.com
+                    </p>
+                </div>
+            </div>
+        </div>`
+    ];
+
+    function renderPage(index) {
+        const container = document.getElementById('pageContainer');
+        container.innerHTML = pages[index];
+
+        // ATUALIZAÇÃO CHAVE: Carrega o estado dos checkboxes após renderizar a página
+        loadCheckboxState();
+
+        // Atualizar botões
+        document.getElementById('prevBtn').disabled = index === 0;
+        document.getElementById('nextBtn').disabled = index === pages.length - 1;
+
+        // Scroll para o topo
+        window.scrollTo(0, 0);
+    }
+
+    function goToPage(pageNumber) {
+        if (pageNumber >= 0 && pageNumber < pages.length) {
+            currentPage = pageNumber;
+            renderPage(currentPage);
+        }
+    }
+
+    function goToIndex() {
+        currentPage = 1; // Página do índice
+        renderPage(currentPage);
+    }
+
+    function nextPage() {
+        if (currentPage < pages.length - 1) {
+            currentPage++;
+            renderPage(currentPage);
+        }
+    }
+
+    function prevPage() {
+        if (currentPage > 0) {
+            currentPage--;
+            renderPage(currentPage);
+        }
+    }
+
+    // Navegação por teclado
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight') nextPage();
+        if (e.key === 'ArrowLeft') prevPage();
+    });
+
+    // Navegação por swipe (mobile)
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        if (touchEndX < touchStartX - 50) nextPage();
+        if (touchEndX > touchStartX + 50) prevPage();
+    }
+
+    // Renderizar primeira página
+    renderPage(0);
+</script>
+</body>
+</html>
+	
